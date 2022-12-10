@@ -1,18 +1,15 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        int count = 0;
-        int majorityElement=0;
-        for(int i=0; i<nums.length;i++){
-            if(count == 0){
-                majorityElement = nums[i];
-            }
-            if(majorityElement== nums[i]){
-                count++;
-            }
-            else{
-                count--;
-            }
-        }
-    return majorityElement;
+       Map<Integer,Integer> map = new HashMap<>();
+       for( int i : nums){
+           //if hashmap contain that number and that number appear more than 1
+           if(map.containsKey(i) && map.get(i)+1 > nums.length/2){
+               return i;
+           }
+           else{
+               map.put(i, map.getOrDefault(i,0)+1);
+           }
+       }
+       return nums[0];
     }
 }
