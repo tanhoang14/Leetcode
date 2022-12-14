@@ -9,6 +9,7 @@ class Solution {
             else{
                 max = Math.max(max, prices[i]-min);
             }
+            
         }
         return max;
     }
