@@ -1,19 +1,15 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        String commonPrefix = "";
         if(strs.length == 0){
-            return commonPrefix;
+            return "";
         }
-        int index = 0;
-        for( char word : strs[0].toCharArray()){
-            for(int i = 1; i < strs.length;i++){
-                if(index >= strs[i].length() || word != strs[i].charAt(index)){
-                    return commonPrefix;
-                }
+        //prefix = flower
+        String prefix = strs[0];
+        for(int i=1; i < strs.length; i++){
+            while(strs[i].indexOf(prefix) !=0){
+                prefix = prefix.substring(0, prefix.length()-1);
             }
-            commonPrefix += word;
-            index++;
         }
-        return commonPrefix;
+        return prefix;
     }
 }
